@@ -41,7 +41,7 @@ public class RelationshipBuilderMain {
 	static String ABATTR = "distribution";
 	static String IDENTIFIERATTR = "identifier";
 	
-	@Option(name="-pic",usage="recursively run something")
+	@Option(name="-pic",usage="if specified, output an 4K image")
     private boolean outputPic;
 	
 	@Option(name="-c",usage="connectedness")
