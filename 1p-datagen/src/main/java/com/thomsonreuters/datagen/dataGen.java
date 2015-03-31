@@ -60,24 +60,26 @@ private void doMain(String[] args) throws JSONException, IOException {
 	
 	
 	String patentStr   = "{"+"'tabName' : 'Patents'," 
-                          + "'id' : 'UID'," 
                           + "'patNum':'USGRANTPATENT'," 
+                          + "'title':'SENTENCE'," 
                           + "'pubdate': 'DATE',"
                           + "'Assignee' : 'COMPANY_NAME', " 
+                          + "'Web URL' : 'URL', " 
                           + "'inventor' : 'NAME'," 
                           + "'Address' : 'ADDRESS', " 
                           + "'NonPatentCitations':'LITDOC'," 
-                          + "'abstract': 'SENTENCE'," 
+                          + "'abstract': 'PARAGRAPH'," 
                           + "}";
     String litStr=     "{"+ "'tabName' : 'Literature'," 
-                          + "'id' : 'UID'," 
                           + "'wos-id':'LITDOC'," 
+                          + "'title':'SENTENCE'," 
                           + "'pubdate': 'DATE',"
-                          + "'Assignee' : 'COMPANY_NAME', " 
+                          + "'Assignee' : 'COMPANY_NAME', "
+                          + "'Web URL' : 'URL', " 
                           + "'inventor' : 'NAME'," 
                           + "'Address' : 'ADDRESS', " 
                           + "'refPatent':'USGRANTPATENT'," 
-                          + "'abstract': 'SENTENCE'," 
+                          + "'abstract': 'PARAGRAPH'," 
                           + "}";
     genData(patentStr, numPatents,"USGRANTPATENT");
     genData(litStr, numLiterature,"LITDOC");

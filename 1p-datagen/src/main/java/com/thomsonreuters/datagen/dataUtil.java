@@ -56,11 +56,11 @@ public class dataUtil {
         Integer dt=  genId(1,20000000);
         data = dt.toString();
         break;
-      case "TEXT" :
-        data = data + textGen(25);
+      case "PARAGRAPH" :
+        data = data + textGenPara(5);
         break;
       case "SENTENCE" :
-        data = data + textGen(70);
+        data = data + textGen(1);
         break;
       case "USGRANTPATENT" :
         data = data + getusrantPatents(2000);
@@ -79,7 +79,9 @@ public class dataUtil {
         break;
       case "DATE" :
         data = data + getRandomDates();
-        break;    
+        break;  
+      case "URL" :
+        data = data + getdomain();
       default:
         break;
         
@@ -115,26 +117,36 @@ public class dataUtil {
   }
 
   public static String textGen(int size) {
-    return text.randomString(size);
+    return wrapQuotes(text.sentence(size));
+  }
+  public static String textGenLatin(int size) {
+    return wrapQuotes(text.latinSentence(size));
   }
   
+  public static String textGenPara(int size) {
+    return wrapQuotes(text.paragraph(size));
+  }
   public static String getCompanyName() {
     Company company = fairy.company();
-    return company.name();
+    return wrapQuotes(company.name());
   }
   
   public static String getName() {
     Person person = fairy.person();
-    return person.fullName();
+    return wrapQuotes(person.fullName());
   }
   public static String getAddress() {
     Person person = fairy.person();
     Address address = person.getAddress();
-    return address.streetNumber() + " " +  address.street() + " " +   address.getCity()  + " " +  address.getPostalCode();
+    return wrapQuotes(address.streetNumber() + " " +  address.street() + " " +   address.getCity()  + " " +  address.getPostalCode());
   }
   public static String getdomain() {
     Company company = fairy.company();
     return company.domain();
+  }
+  
+  public static String wrapQuotes(String data) {
+    return "\"" + data + "\"";
   }
   public static String getusrantPatents(int year) {
     String usgrantPatent  = "US";
