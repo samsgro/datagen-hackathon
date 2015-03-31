@@ -20,11 +20,11 @@ public class dataGen {
 	@Option(name="-literature",usage="number of literature records")
     private int numLiterature = 1;
 
-  public static void main(String[] args) throws IOException, JSONException, org.apache.wink.json4j.JSONException, InterruptedException {
+  public static void main(String[] args) throws IOException, JSONException, org.apache.wink.json4j.JSONException {
       new dataGen().doMain(args);
   }
 
-private void doMain(String[] args) throws JSONException, IOException, InterruptedException {
+private void doMain(String[] args) throws JSONException, IOException {
 	CmdLineParser parser = new CmdLineParser(this);
     
     // if you have a wider console, you could increase the value;
@@ -81,7 +81,6 @@ private void doMain(String[] args) throws JSONException, IOException, Interrupte
                           + "}";
     genData(patentStr, numPatents,"USGRANTPATENT");
     genData(litStr, numLiterature,"LITDOC");
-    Thread.sleep(60000);
 }
   
   public static void genData(String jsonStr, int num, String type) throws org.apache.wink.json4j.JSONException, IOException {
