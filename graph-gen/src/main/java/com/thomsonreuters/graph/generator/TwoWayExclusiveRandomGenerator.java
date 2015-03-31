@@ -74,7 +74,7 @@ public class TwoWayExclusiveRandomGenerator extends RandomGenerator {
 					binaryValue = 0;
 					addNodeWithDistributionAttribute(nodeId, binaryValue, setAFile[aSet.size() - 1]);
 					
-				} else { System.out.println("A size fail"); }
+				}
 			} 
 			else 
 			{ 
@@ -82,7 +82,7 @@ public class TwoWayExclusiveRandomGenerator extends RandomGenerator {
 					bSet.add(nodeId); 
 					binaryValue = 1; 
 					addNodeWithDistributionAttribute(nodeId, binaryValue, setAFile[bSet.size() - 1]);
-				} else { System.out.println("B size fail"); }
+				}
 			}
 		}
 		
@@ -103,7 +103,7 @@ public class TwoWayExclusiveRandomGenerator extends RandomGenerator {
 	 */
 	public boolean nextEvents() {
 
-		System.out.println("cycle nodecount " + nodeCount);
+		//System.out.println("cycle nodecount " + nodeCount);
 
 		
 		double binaryValue;
@@ -135,7 +135,7 @@ public class TwoWayExclusiveRandomGenerator extends RandomGenerator {
 				
 				nodeCount++;
 				
-			} else { System.out.println("A size fail"); }
+			}
 		} 
 		else 
 		{ 
@@ -162,7 +162,7 @@ public class TwoWayExclusiveRandomGenerator extends RandomGenerator {
 				}
 				
 				nodeCount++;
-			} else { System.out.println("B size fail"); }
+			}
 		}
 		return true;
 	}
