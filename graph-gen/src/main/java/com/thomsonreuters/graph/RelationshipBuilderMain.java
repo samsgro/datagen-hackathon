@@ -41,6 +41,9 @@ public class RelationshipBuilderMain {
 	static String ABATTR = "distribution";
 	static String IDENTIFIERATTR = "identifier";
 	
+	@Option(name="-pic",usage="recursively run something")
+    private boolean outputPic;
+	
 	@Option(name="-c",usage="connectedness")
     private double connectedness = 1.2;
 	
@@ -118,11 +121,8 @@ public class RelationshipBuilderMain {
 		
 		
 		outputCSVFile(graph, "output.csv");
-		outputScreenshot(graph, "screenshot.png");
+		if(outputPic) outputScreenshot(graph, "screenshot.png");
 
-
-
-		
 	}
 	
 	
@@ -130,13 +130,13 @@ public class RelationshipBuilderMain {
 
 		graph.addAttribute("ui.stylesheet", 
 				"edge { size: 1px; shape: line; fill-mode: dyn-plain; fill-color: #E6E6E6; arrow-size: 1px, 1px; z-index: 0;} "
-				+ "node { size: 3px; fill-color: #777;text-mode: normal; z-index: 5;} "
-				+ "node.isSetB { size: 3px; fill-color:red; z-index: 5;}");
+				+ "node { size: 5px; fill-color: #777;text-mode: normal; z-index: 5;} "
+				+ "node.isSetB { size: 5px; fill-color:red; z-index: 5;}");
 		graph.addAttribute("ui.quality");
 		graph.addAttribute("ui.antialias");
 		
 		OutputType type = OutputType.PNG;
-		Resolution resolution = Resolutions.TwoK;
+		Resolution resolution = outputResolution.FourK;
 		FileSinkImages fsi = new FileSinkImages(type, resolution);
 		fsi.setLayoutPolicy(LayoutPolicy.COMPUTED_ONCE_AT_NEW_IMAGE);
 		fsi.writeAll(graph, output);
@@ -161,6 +161,32 @@ public class RelationshipBuilderMain {
 			
 		}
 		bw.flush(); bw.close(); fw.close();
+		
+	}
+	
+	public static enum outputResolution implements Resolution {
+		FourK(4096,4096)
+		;
+		
+		outputResolution(int width, int height) {
+			this.width = width;
+			this.height = height;
+		}
+		
+		final int width, height;
+		
+		public int getWidth() {
+			return width;
+		}
+
+		public int getHeight() {
+			return height;
+		}
+		
+		@Override
+		public String toString() {
+			return String.format("%s (%dx%d)", name(), width, height);
+		}
 		
 	}
 
