@@ -35,7 +35,7 @@ import org.kohsuke.args4j.spi.BooleanOptionHandler;
 
 import com.thomsonreuters.graph.generator.TwoWayExclusiveRandomGenerator;
 
-public class GraphstreamTest {
+public class RelationshipBuilderMain {
 
 	
 	static String ABATTR = "distribution";
@@ -57,7 +57,7 @@ public class GraphstreamTest {
 	    private List<String> arguments = new ArrayList<String>();
 
 	    public static void main(String[] args) throws IOException {
-	        new GraphstreamTest().doMain(args);
+	        new RelationshipBuilderMain().doMain(args);
 	    }
 	
 
