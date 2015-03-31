@@ -1,0 +1,50 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'os-package'
+
+sourceCompatibility = 1.8
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2'
+}
+
+repositories {
+   mavenCentral()
+   jcenter()
+   
+   maven {
+     url "http://repo.1p.thomsonreuters.com/nexus/content/repositories/snapshots"
+   }
+}
+
+buildscript {
+        repositories {
+                jcenter()
+        }
+
+        dependencies {
+                classpath 'com.netflix.nebula:gradle-ospackage-plugin:2.2.0'
+        }
+}
+
+dependencies {
+    compile  group:  'org.graphstream', name: 'gs-core', version: '1.2+'
+    compile  group:  'org.graphstream', name: 'gs-ui', version: '1.2+'
+    compile  group:  'org.graphstream', name: 'gs-algo', version: '1.2+'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.3.2+'
+    compile group: 'args4j', name: 'args4j', version: '2.32+'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}
+
+
